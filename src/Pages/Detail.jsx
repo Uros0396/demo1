@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import fantasy from "../books/fantasy.json";
+import "./Detail.css";
 
 const Detail = () => {
   const { asin } = useParams();
@@ -24,7 +26,7 @@ const Detail = () => {
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmVlOWQ5Y2NiMjkxYzAwMTU4ZmZhNzYiLCJpYXQiOjE3MjY5MTM5NDgsImV4cCI6MTcyODEyMzU0OH0.J_kRGzLfLnx17wdw-29AEFnyzf_BotE8397dKj8gYyk",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxNTFmNjBmMzg1MDAwMTUxYzE3OWMiLCJpYXQiOjE3MjgxMzk3NjYsImV4cCI6MTcyOTM0OTM2Nn0.dJG3wysAo1YXU2MXgdRsxVCki2TouKvypDxix9-28d0",
           },
         }
       );
@@ -43,34 +45,58 @@ const Detail = () => {
   }, [asin]);
 
   if (loading) {
-    return <p>Caricamento commenti...</p>;
+    return <p>Loading Comments...</p>;
   }
 
   return (
-    <div>
-      {book ? (
-        <div>
-          <h1>{book?.title}</h1>
-          <h3>Categoria: {book?.category}</h3>
-          <p>Prezzo: {book?.price}</p>
-          <img src={book?.img} alt={book?.title} />
-        </div>
-      ) : (
-        <p>Dettagli del libro non trovati.</p>
-      )}
-      <h1>Commenti per il libro con ASIN: {asin}</h1>
-      {comments.length > 0 ? (
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment._id}>
-              {comment.comment} - <b>{comment.rate}</b> stelle
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Comment Not Found.</p>
-      )}
-    </div>
+    <Container fluid>
+      <Row className="mt-5">
+        <Col
+          lg={6}
+          md={6}
+          sm={12}
+          className="d-flex flex-column align-items-center"
+        >
+          {book ? (
+            <div className="text-center">
+              <h4>{book?.title}</h4>
+              <img src={book?.img} alt={book?.title} className="fixed-image" />
+              <p>
+                <b>Category:</b> {book?.category}
+              </p>
+              <p>
+                <b>Price:</b> {book?.price} €
+              </p>
+            </div>
+          ) : (
+            <p>Book details not found</p>
+          )}
+        </Col>
+        <Col lg={6} md={6} sm={12}>
+          <h4>Comments with ASIN: {asin}</h4>
+          <div className="comments-container mb-5">
+            {comments.length > 0 ? (
+              <ul className="comments-list">
+                {comments.map((comment) => (
+                  <li
+                    key={comment._id}
+                    className={`"comment-item" ${
+                      isDarkMode ? "text-primary" : "text-dark"
+                    }`}
+                  >
+                    <p>
+                      {comment.comment} - <b>{comment.rate}</b> stars
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>Comments not found.</p>
+            )}
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

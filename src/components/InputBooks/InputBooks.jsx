@@ -19,7 +19,7 @@ const InputBooks = () => {
     <div>
       <input
         type="text"
-        placeholder="Search Book"
+        placeholder="Fantasy Libriary"
         value={searchTerm}
         onChange={handleInputChange}
       />
