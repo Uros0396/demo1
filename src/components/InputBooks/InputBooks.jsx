@@ -1,5 +1,5 @@
 import { useContext } from "react";
-//import fantasy from "../books/fantasy.json";
+
 import { SearchContext } from "../SearchContext/SearchContext";
 
 const InputBooks = () => {
@@ -8,12 +8,6 @@ const InputBooks = () => {
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-  /*const filteredBooks = searchTerm
-      ? fantasy.filter((book) =>
-          book?.title.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : [];*/
 
   return (
     <div>
