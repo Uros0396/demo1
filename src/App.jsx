@@ -67,7 +67,7 @@ export default App;*/
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./Pages/HomePage";
-import LoginPage from "./Pages/LoginPage"; // Importa LoginPage
+import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Browse from "./Pages/Browse";
@@ -78,10 +78,8 @@ const App = () => {
   return (
     <BrowserRouter>
       {" "}
-      {/* Avvolge l'intera applicazione */}
       <Routes>
         <Route exact path="/" element={<LoginPage />} />{" "}
-        {/* Percorso per il login */}
         <Route path="/Home" element={<HomePage />} />
         <Route path="/About" element={<About />} />
         <Route path="/Browse" element={<Browse />} />
