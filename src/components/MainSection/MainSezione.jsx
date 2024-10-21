@@ -2,26 +2,16 @@ import fantasy from "../../books/fantasy.json";
 import { Col, Container, Row } from "react-bootstrap";
 import SingleBook from "../SingleBook/SingleBook";
 import CustomCard from "../CustomCard/CustomCard";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { SearchContext } from "../SearchContext/SearchContext";
 import { DarkContext } from "../../contexts/DarkContext";
 import CommentArea from "../CommentArea/CommentArea";
-import "./MainSezione.css";
+import "../MainSection/MainSezione.css";
 
 const MainSezione = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const { searchTerm } = useContext(SearchContext);
   const { isDarkMode } = useContext(DarkContext);
-
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:3061/blogs")
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.blogs);
-        setUsers(res.blogs);
-      });
-  }, []);
 
   const filteredBooks = searchTerm
     ? fantasy.filter((book) =>
@@ -43,11 +33,6 @@ const MainSezione = () => {
             >
               Book of the Day
             </h2>
-
-            {users.map((elem) => {
-              return <p key={elem._id}>Blog: {elem?.name}</p>;
-            })}
-
             {randomBook.slice(0, 1).map((book) => (
               <SingleBook
                 key={book?.asin}

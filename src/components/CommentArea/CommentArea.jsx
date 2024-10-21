@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Spinner, Button } from "react-bootstrap";
-import "./CommentArea.css";
+import "../CommentArea/CommentArea.css";
 import DeleteReview from "../DeleteReview/DeleteReview";
 import ReviewsContext from "../ReviewsContext/ReviewsContext";
 import { PostReviewsContext } from "../PostReviewsContext/PostReviewsContext";

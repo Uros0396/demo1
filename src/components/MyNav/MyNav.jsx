@@ -3,7 +3,7 @@ import InputBooks from "../InputBooks/InputBooks";
 import { useContext } from "react";
 import { DarkContext } from "../../contexts/DarkContext";
 import { Link } from "react-router-dom";
-import "./MyNav.css";
+import "../MyNav/MyNav.css";
 
 const MyNav = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkContext);

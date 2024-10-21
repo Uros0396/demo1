@@ -20,11 +20,11 @@ const SingleBook = ({ img, category, title, price }) => {
         <CardBody>
           <CardTitle className="text-center card-title">{title}</CardTitle>
           <CardText className="text-center">
-            <h5 className="card-text">Category</h5>
+            Category
             {category}
           </CardText>
           <CardText className="text-center">
-            <h5 className="card-text">Price</h5>
+            Price
             {price} €
           </CardText>
         </CardBody>
